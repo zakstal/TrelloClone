@@ -4,7 +4,7 @@ window.TrelloClone = {
   Views: {},
   Routers: {},
   initialize: function(element) {
-    // alert("hello")
+
     TrelloClone.boards = new TrelloClone.Collections.Boards()
     TrelloClone.boards.fetch()
 

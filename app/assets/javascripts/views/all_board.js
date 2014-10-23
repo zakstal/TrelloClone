@@ -7,6 +7,7 @@ TrelloClone.Views.Board  = Backbone.CompositeView.extend({
   },
 
   initialize: function() {
+
       this.listenTo(this.collection, "sync remove", this.render)
   },
 
@@ -29,5 +30,6 @@ TrelloClone.Views.Board  = Backbone.CompositeView.extend({
     var id = $(event.target).data("id")
     this.collection.get(id).destroy();
   }
+
 
 });

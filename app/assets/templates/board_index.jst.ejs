@@ -2,7 +2,7 @@
 <ul>
 <% boards.each(function(board){ %>
   <li>
-    <a href="#"><%= board.attributes.title %></a>   <button class="delete" data-id="<%= board.attributes.id %>">Delete Board</button></li>
+    <a href="#/board/<%= board.attributes.id %>"><%= board.attributes.title %></a>   <button class="delete" data-id="<%= board.attributes.id %>">Delete Board</button></li>
   <% }); %>
 
 </ul>
