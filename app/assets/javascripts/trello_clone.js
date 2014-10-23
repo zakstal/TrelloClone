@@ -3,18 +3,15 @@ window.TrelloClone = {
   Collections: {},
   Views: {},
   Routers: {},
-  initialize: function() {
-    alert("hello")
-    TrelloClone.lists = new TrelloClone.Collections.Lists
-    //create collection of boards
-    TrelloClone.boars = new TrelloClone.Collections.Boards
+  initialize: function(element) {
+    // alert("hello")
+    TrelloClone.boards = new TrelloClone.Collections.Boards()
+    TrelloClone.boards.fetch()
 
-    new TrelloClone.Routers.BoardsRouter();
-    Backbone.histroy.start()
+    new TrelloClone.Routers.BoardsRouter({
+      "$el": element
+    });
+    Backbone.history.start()
   }
 
-  //does this need to be here?
-  // $(document).ready(fucntion(){
- //
- //  })
 };

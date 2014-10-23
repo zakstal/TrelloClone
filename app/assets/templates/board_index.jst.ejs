@@ -1,0 +1,13 @@
+<h1>Your Boards</h1>
+<ul>
+<% boards.each(function(board){ %>
+  <li>
+    <a href="#"><%= board.attributes.title %></a>   <button class="delete" data-id="<%= board.attributes.id %>">Delete Board</button></li>
+  <% }); %>
+
+</ul>
+
+<form class="create-board">
+  <input type="text" name="board[title]" class="input" >
+  <button class="submit">Create Board</button>
+</form>
