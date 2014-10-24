@@ -1,33 +1,41 @@
 TrelloClone.Views.OneBoard = Backbone.CompositeView.extend({
   template: JST['board_show'],
 
+  tagName: 'ul',
+
+  className: 'board-list',
+
+  events: {
+    "click .submit": "createList"
+  },
+
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.model.lists(), "sync", this.render);
   },
 
   render: function() {
-
+     // this.rendList =
     var boardTemp = this.template({
-      board: this.model
-
+      board: this.model,
     });
 
+    this.$el.html(boardTemp);
+    this.renderLists()
+    return this;
+  },
 
-    var $board = $(boardTemp);
-    var $boardList = $($board.find('board-list'))
-    // console.log($boardList)
+  renderLists: function() {
     var that = this
     this.model.lists().each(function(list){
-      var newList = new TrelloClone.Views.List({ model: list })
-      console.log(newList)
-      that.addSubview('.board-list', newList)
-      // console.log(newList)
- //      $board.append(newList.render().$el)
+      var renderedList = new TrelloClone.Views.List({model: list})
+     that.$el.append(renderedList.render().$el);
     });
+  },
 
-    console.log(this.$el.find('li').first().attributes())
-
-    this.$el.html($board);
-    return this;
+  createList: function(event) {
+    event.preventDefault();
+    var params = $(event.currentTarget).parent().serializeJSON();
+    this.model.lists().create(params)
   }
 });

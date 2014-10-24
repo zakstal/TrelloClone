@@ -1,5 +1,8 @@
 <h3>The name of this board is: <%= board.attributes.title %></h3>
-<ul class="board-list">
 
-
-</ul>
+<a href="#">Boards</a>
+<form class="create-list">
+  <input type="hidden" name="list[board_id]" value="<%= board.attributes.id %>">
+  <input type="text" name="list[title]" class="input" >
+  <button class="submit">Create List</button>
+</form>
