@@ -5,8 +5,8 @@
 
   json.(@board, :title, :id, :created_at, :updated_at)
   json.lists @board.lists do |list|
-    json.(list, :title, :board_id, :ord)
+    json.(list, :title, :id, :board_id, :ord)
     json.cards list.cards do |card|
-      json.(card, :title, :list_id, :description, :ord)
+      json.(card, :title, :id, :list_id, :description, :ord)
     end
   end

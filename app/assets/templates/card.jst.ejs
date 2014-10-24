@@ -1,5 +1,2 @@
-<ul>
-  <% cardsView.each(function(cardView){ %>
-      <li><% cardView %></li>
-  <% }); %>
-</ul>
+<%= card.attributes.title %><%= card.attributes.description %> <button class="delete delete-card" data-id="<%= card.attributes.id %>">Delete List</button>
+

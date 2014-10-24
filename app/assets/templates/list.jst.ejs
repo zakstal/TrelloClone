@@ -1,4 +1,11 @@
 <div>
-<h4><%= list.attributes.title %></h4>
-
+<h4><%= list.attributes.title %> <button class="delete delete-list" data-id="<%= list.attributes.id %>">Delete List</button></h4>
+<form class=" form form-create create-card">
+  <input type="hidden" name="card[list_id]" value="<%= list.attributes.id %>">
+  <label class="label create-title" for="title-card">Title</label>
+  <input type="text" name="card[title]" id="title-card">
+  <label class="label create-description" for="description-card">Description</label>
+  <input type="text" name="card[description]" id="description-card">
+  <button class="submit-card">Create Card</button>
+</form>
 </div>

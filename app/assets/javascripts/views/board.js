@@ -3,7 +3,7 @@ TrelloClone.Views.OneBoard = Backbone.CompositeView.extend({
 
   tagName: 'ul',
 
-  className: 'board-list',
+  className: 'group rounded-boarder board-list',
 
   events: {
     "click .submit": "createList"
@@ -11,7 +11,7 @@ TrelloClone.Views.OneBoard = Backbone.CompositeView.extend({
 
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
-    this.listenTo(this.model.lists(), "sync", this.render);
+    this.listenTo(this.model.lists(), "sync remove", this.render);
   },
 
   render: function() {
@@ -28,8 +28,13 @@ TrelloClone.Views.OneBoard = Backbone.CompositeView.extend({
   renderLists: function() {
     var that = this
     this.model.lists().each(function(list){
-      var renderedList = new TrelloClone.Views.List({model: list})
-     that.$el.append(renderedList.render().$el);
+      var renderedList = new TrelloClone.Views.List({
+        model: list,
+        board: that.model
+      });
+      var newLi = $("<li>")
+      newLi.html(renderedList.render().$el)
+     that.$el.append(newLi);
     });
   },
 

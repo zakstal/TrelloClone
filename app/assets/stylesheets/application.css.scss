@@ -18,4 +18,67 @@
 
 body {
   padding: 5px;
+  background: rgb(35,115,159);
+}
+
+.group:after {
+  content: "";
+  display: block;
+	clear: both;
+}
+
+.board-list > li {
+  display: block;
+  float: left;
+}
+
+
+
+.list-list {
+  margin: 5px;
+  background: #e3e3e3;
+  width: 260px;
+  position: relative;
+  padding: 4px 3px 3px;
+
+}
+
+.card-list {
+  position: relative;
+  padding: 6px 8px 4px;
+  z-index: 10;
+}
+
+.rounded-boarder {
+  border-radius: 3px;
+}
+
+ul {
+  list-style: none;
+}
+
+label {
+  color: black;
+}
+
+.card-list {
+//  display: inline-block;
+  background: white;
+}
+
+
+
+h3 {
+  color: white;
+}
+
+
+
+//#########displaynone############
+form.create-card {
+  display: none;
+}
+
+.delete {
+  display: none;
 }

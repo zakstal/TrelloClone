@@ -22,6 +22,13 @@ module Api
       end
     end
 
+    def destroy
+      puts "here 11111111111111111111"
+      @card = Card.find(params[:id])
+      @card.destroy
+      render json: {}
+    end
+
     private
 
     def current_list
@@ -32,6 +39,7 @@ module Api
         @list = List.find(params[:card][:list_id])
       end
     end
+
 
     def current_board
       current_list.board
