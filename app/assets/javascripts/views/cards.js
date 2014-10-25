@@ -1,7 +1,10 @@
 TrelloClone.Views.Card = Backbone.CompositeView.extend({
   template: JST['card'],
+
   tagName: 'li',
+
   className: 'rounded-boarder card-list group',
+
   events: {
     "click .delete-card": "deleteCard"
   },

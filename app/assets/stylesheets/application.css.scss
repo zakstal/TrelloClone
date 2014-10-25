@@ -22,14 +22,21 @@ body {
 }
 
 .group:after {
-  content: "";
+  content: ".";
   display: block;
 	clear: both;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
 }
 
 .board-list > li {
   display: block;
   float: left;
+  max-height: 100%;
+  overflow: auto;
+  margin-bottom: 50px;
+
 }
 
 
@@ -37,16 +44,34 @@ body {
 .list-list {
   margin: 5px;
   background: #e3e3e3;
+  box-sizing: border-box;
   width: 260px;
   position: relative;
   padding: 4px 3px 3px;
+  display: flex;
+  -webkit-box-orient: vertical;
+  flex-direction: column;
+  -webkit-box-flex: 0;
+  flex: 0 0 260;
+  height: 100%;
+  -webkit-transfrom: translate3d(0,0,0);
+  overflow: auto;
 
 }
 
 .card-list {
   position: relative;
   padding: 6px 8px 4px;
+  margin-bottom: 3px;
   z-index: 10;
+}
+
+.inner-cards-list {
+  margin-bottom: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 4px 4px 1px;
+  z-index: 1;
 }
 
 .rounded-boarder {
@@ -63,7 +88,26 @@ label {
 
 .card-list {
 //  display: inline-block;
-  background: white;
+  background: #fff;
+  border-bottom: 1pz solid #ccc;
+  cursor: pointer;
+  margin-bottom: 5px;
+  max-width: 300px;
+  min-height: 20px;
+  position: relative;
+  z-index: 0;
+
+}
+
+.board-list {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
 }
 
 
@@ -72,13 +116,110 @@ h3 {
   color: white;
 }
 
+h4 {
+  padding: none;
+  margin: 0 0 0 0;
+}
 
+.list-header {
+  -webkit-box-flex: 0;
+  flex: 0 0 auto;
+  padding: 3px 26px 2px 6px;
+  position: relative;
+  min-height: 19px;
+}
+
+.list-header.editable {
+  cursor: -webkit-grab;
+}
+
+.open-add-card {
+
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  color: #939393;
+  display: block;
+  -webkit-box-flex: 0;
+  margin: 2px -3px -3px;
+  padding: 7px 10px;
+  position: relative;
+  text-decoration: none;
+
+}
+
+.open-add-card:hover {
+
+  background: #c3c3c3;
+  color: #222;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+//card
+
+.submit-card {
+  float: left;
+  margin-top: 0px;
+  padding: 5px 18px;
+  background: linear-gradient(to bottom, #24a828 0, #1b7e1e);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 700;
+  line-height: 20px;
+  margin: 6px 4px 0 0;
+  text-align: center;
+  -webkit-border-radius: 3px;
+  outline: none;
+}
+
+
+.submit-card:active {
+  background: linear-gradient(to bottom, #1f9323 0,#166919 100%);
+}
+
+.description-card {
+  float: left;
+  padding: 6px 8px 4px;
+  z-index: 10;
+  box-sizing: border-box;
+  border-radius: 3px;
+  display: block;
+  width: 100%;
+  background: white;
+  border: none;
+  box-shadow: none;
+  margin-bottom: 4px;
+  max-height: 162px;
+  min-height: 54px;
+  padding: 0;
+  flex-direction: column;
+  cursor: auto;
+  white-space: pre-wrap;
+  outline: none;
+  resize: none;
+}
+
+
+.list-list {
+  max-height: 100%;
+  overflow: auto;
+}
 
 //#########displaynone############
 form.create-card {
-  display: none;
+//  display: none;
+float: left;
+padding: 0px 4px 8px 4px;
 }
 
 .delete {
+  display: none;
+}
+
+.toggle-form-hide {
   display: none;
 }
