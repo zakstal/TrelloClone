@@ -3,7 +3,7 @@ TrelloClone.Views.OneBoard = Backbone.CompositeView.extend({
 
   tagName: 'ul',
 
-  className: 'group rounded-boarder board-list',
+  className: 'group rounded-boarder board-list group',
 
   events: {
     "click .submit": "createList"
